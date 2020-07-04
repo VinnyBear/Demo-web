@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/cache"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--启动注解驱动的spring MVC功能，注册请求url和注解POJO类方法映射-->
+    <mvc:annotation-driven></mvc:annotation-driven>
+    
+    <context:component-scan base-package="com.demo"></context:component-scan>
+    <!--静态文件-->
+    <mvc:default-servlet-handler></mvc:default-servlet-handler>
+
+    <!--对模型视图名称的解析，在请求时模型视图名称添加前后缀-->
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
+        <property name="prefix" value="views/"></property> <!--前缀-->
+        <property name="suffix" value=".jsp"></property> <!--后缀-->
+    </bean>
+</beans>
